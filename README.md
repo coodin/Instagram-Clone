@@ -7,8 +7,8 @@ A new Flutter project.
 This project provides some of the Instagram Features that you will see o screenshots at below. Some of the features are not implemented so it can be implemented in the future to engage more people throughout  the project.if you want to contribute, please feel free.
 
 
-
-[This is feed scren as you can see .](screenshots/feed.jpg)
+- This is feed scren as you can see .
+![](screenshots/feed.jpg)
 - This is post screen that will show arbitrary posts.
 [](screenshots/posts.jpg)
 - This is post sreen which you can upload new post with image and some text
