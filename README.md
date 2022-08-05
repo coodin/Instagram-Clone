@@ -8,17 +8,17 @@ This project provides some of the Instagram Features that you will see o screens
 
 
 - This is feed scren as you can see .
-![](screenshots/feed.jpg)
+<img src="screenshots/feed.jpg" width="128"/>
 - This is post screen that will show arbitrary posts.
-[](screenshots/posts.jpg)
+<img src="screenshots/posts.jpg" width="128"/>
 - This is post sreen which you can upload new post with image and some text
-[](screenshots/post.jpg)
+<img src="screenshots/post.jpg" width="128"/>
 - This is notification screen that I didn't implement but I wanted to put it.
-[](screenshots/notify.jpg)
+<img src="screenshots/notify.jpg" width="128"/>
 - This is the profile scren that you can check your posts, followers,following.
-[](screenshots/profile.jpg)
+<img src="screenshots/profile.jpg" width="128"/>
 - you will see this screen when you searched someone in search screen and tapped on it
-[](screenshots/another-user-profile.jpg)
+<img src="screenshots/another-user-profile.jpg" width="128"/>
 - This screen will show the users that you have searched by their name
-[](screenshots/search.jpg)
+<img src="screenshots/search.jpg" width="128"/>
 
