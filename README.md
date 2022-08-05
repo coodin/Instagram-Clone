@@ -8,7 +8,7 @@ This project provides some of the Instagram Features that you will see o screens
 
 
 - This is feed scren as you can see .
-<img src="screenshots/feed.jpg" width="135"/>
+<img src="screenshots/feed.jpg" width="200"/>
 
 - This is post screen that will show arbitrary posts.
 <img src="screenshots/posts.jpg" width="128"/>
