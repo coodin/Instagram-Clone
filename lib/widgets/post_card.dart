@@ -25,7 +25,6 @@ class _PostCardState extends State<PostCard> {
   bool isLikeAnimating = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     //getCommentsLength();
   }
@@ -48,10 +47,7 @@ class _PostCardState extends State<PostCard> {
       child: Column(
         children: [
           // HEADER SECTION
-          PostHeader(
-              profImage: widget.post.profImage,
-              userName: widget.post.userName,
-              postId: widget.post.postId),
+          PostHeader(profImage: widget.post.profImage, userName: widget.post.userName, postId: widget.post.postId),
           // IMAGE SECTİON
           Selector<UserProvider, String>(
             selector: (context, provider) => provider.getUser.uid,
@@ -109,9 +105,7 @@ class _PostCardState extends State<PostCard> {
           ),
           // DESCRİPTION AND NUMBER OF COMMENTS
           FutureBuilder<int>(
-            future: context
-                .read<PostProvider>()
-                .getCommentLength(widget.post.postId),
+            future: context.read<PostProvider>().getCommentLength(widget.post.postId),
             builder: (context, snapshot) {
               return PostFooter(
                   description: widget.post.description,
@@ -172,10 +166,7 @@ class PostFooter extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DefaultTextStyle(
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2!
-                .copyWith(fontWeight: FontWeight.w800),
+            style: Theme.of(context).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.w800),
             child: Text(
               "${likes} likes",
               style: Theme.of(context).textTheme.bodyText2,
@@ -294,18 +285,12 @@ class PostHeader extends StatelessWidget {
   final String profImage;
   final String userName;
   final String postId;
-  const PostHeader(
-      {Key? key,
-      required this.profImage,
-      required this.userName,
-      required this.postId})
-      : super(key: key);
+  const PostHeader({Key? key, required this.profImage, required this.userName, required this.postId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          EdgeInsets.symmetric(vertical: 4, horizontal: 16).copyWith(right: 0),
+      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16).copyWith(right: 0),
       child: Row(
         children: [
           CircleAvatar(
@@ -341,14 +326,11 @@ class PostHeader extends StatelessWidget {
                         .map(
                           (value) => InkWell(
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 12, horizontal: 16),
+                              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                               child: Text(value),
                             ),
                             onTap: () async {
-                              var res = await context
-                                  .read<PostProvider>()
-                                  .deletePost(postId);
+                              var res = await context.read<PostProvider>().deletePost(postId);
                               Navigator.of(context).pop();
                               if (res == "Success") {
                                 showSnacbar(context, "Post have deleted");

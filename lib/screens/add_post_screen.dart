@@ -1,8 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/providers/user_provider.dart';
 import 'package:instagram/resources/firestore_methods.dart';
@@ -27,8 +25,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       _isLoading = true;
     });
     try {
-      String res = await FirestoreMethods().uploadPhoto(
-          _decriptionController.text, _file!, uid, username, profImage);
+      String res = await FirestoreMethods().uploadPhoto(_decriptionController.text, _file!, uid, username, profImage);
       if (res == "Success") {
         setState(() {
           _isLoading = false;
@@ -126,10 +123,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               actions: [
                 Consumer<UserProvider>(
                   builder: ((_, user, __) => TextButton(
-                        onPressed: () => {
-                          postImage(user.getUser.uid, user.getUser.userName,
-                              user.getUser.photoUrl)
-                        },
+                        onPressed: () => {postImage(user.getUser.uid, user.getUser.userName, user.getUser.photoUrl)},
                         child: Text(
                           "Post",
                           style: TextStyle(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/models/comment.dart';
 import 'package:instagram/utils/colors.dart';
-import 'package:instagram/utils/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
@@ -136,8 +135,7 @@ class CommentLine extends StatelessWidget {
                     padding: EdgeInsets.only(top: 4),
                     child: Text(
                       DateFormat.yMMMd().format(comments[index].datePublis),
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
                     ),
                   ),
                 ],

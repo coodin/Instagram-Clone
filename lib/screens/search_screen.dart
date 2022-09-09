@@ -1,8 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instagram/models/post.dart';
 import 'package:instagram/providers/post_provider.dart';
@@ -79,8 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: isShowUsers
           ? StreamBuilder(
-              stream: context.select<SearchProvider, Stream<List<User>>?>(
-                  (provider) => provider.getSearchUsers),
+              stream: context.select<SearchProvider, Stream<List<User>>?>((provider) => provider.getSearchUsers),
               builder: (context, AsyncSnapshot<List<User>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.active) {
                   if (snapshot.hasData) {
@@ -92,15 +87,13 @@ class _SearchScreenState extends State<SearchScreen> {
                             ///print("uid: ${snapshot.data![index].uid}");
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => ProfileScreen(
-                                    uid: snapshot.data![index].uid),
+                                builder: (context) => ProfileScreen(uid: snapshot.data![index].uid),
                               ),
                             );
                           },
                           child: ListTile(
                             leading: CircleAvatar(
-                              backgroundImage:
-                                  NetworkImage(snapshot.data![index].photoUrl),
+                              backgroundImage: NetworkImage(snapshot.data![index].photoUrl),
                             ),
                             title: Text(snapshot.data![index].userName),
                           ),

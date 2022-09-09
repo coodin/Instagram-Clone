@@ -1,17 +1,13 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/screens/login_screen.dart';
 import 'package:instagram/utils/utils.dart';
 
 import '../resources/auth_methods.dart';
-import '../responsive/mobile_screen_layout.dart';
-import '../responsive/responsive_layout_screen.dart';
-import '../responsive/web_screen_layout.dart';
 import '../utils/colors.dart';
 import '../widgets/text_field_input.dart';
 
@@ -32,7 +28,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -56,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       password: _passwordController.text,
       userName: _userNameController.text,
       bio: _bioController.text,
-      file: _image!,
+      file: _image,
     );
     setState(() {
       _isLoading = false;
@@ -175,8 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: ShapeDecoration(
                             color: blueColor,
                             shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
+                              borderRadius: BorderRadius.all(Radius.circular(4)),
                             ),
                           ),
                         ),

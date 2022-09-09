@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/providers/post_provider.dart';
 import 'package:instagram/providers/user_provider.dart';
@@ -11,7 +8,6 @@ import 'package:provider/provider.dart';
 
 import '../models/post.dart';
 import '../models/user.dart' as myUser;
-import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -50,8 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: CircularProgressIndicator(),
           )
         : StreamProvider<myUser.User?>(
-            create: (context) =>
-                parentContext.read<UserProvider>().getEitherOfScreens,
+            create: (context) => parentContext.read<UserProvider>().getEitherOfScreens,
             initialData: myUser.User(
               photoUrl: "",
               uid: "",
@@ -106,13 +101,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
                                           FutureBuilder<int>(
-                                            future: context
-                                                .read<PostProvider>()
-                                                .getPostsLength(widget.uid),
+                                            future: context.read<PostProvider>().getPostsLength(widget.uid),
                                             builder: (context, snapshot) {
                                               var data = 0;
                                               if (snapshot.hasData) {
@@ -120,33 +112,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               } else if (snapshot.hasError) {
                                                 data = 0;
                                               }
-                                              return buildStatColumn(
-                                                  data, "posts");
+                                              return buildStatColumn(data, "posts");
                                             },
                                           ),
-                                          buildStatColumn(user.followers.length,
-                                              "followers"),
-                                          buildStatColumn(user.following.length,
-                                              "following"),
+                                          buildStatColumn(user.followers.length, "followers"),
+                                          buildStatColumn(user.following.length, "following"),
                                         ],
                                       ),
                                       Row(
                                         children: [
                                           context.select<UserProvider, String>(
-                                                    ((value) =>
-                                                        value.getUserUid),
+                                                    ((value) => value.getUserUid),
                                                   ) ==
                                                   widget.uid
                                               ? FollowButton(
-                                                  backgroundColor:
-                                                      mobileBackgroundColor,
+                                                  backgroundColor: mobileBackgroundColor,
                                                   text: "Sign Out",
                                                   textColor: primaryColor,
                                                   borderColor: Colors.grey,
                                                   onPressed: () async {
-                                                    await context
-                                                        .read<UserProvider>()
-                                                        .logOut();
+                                                    await context.read<UserProvider>().logOut();
                                                     // Navigator.of(context)
                                                     //     .pushReplacement(
                                                     //   MaterialPageRoute(
@@ -157,68 +142,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   },
                                                 )
                                               : user.followers.contains(
-                                                  context.select<UserProvider,
-                                                      String>(
-                                                    ((provider) =>
-                                                        provider.getUserUid),
+                                                  context.select<UserProvider, String>(
+                                                    ((provider) => provider.getUserUid),
                                                   ),
                                                 )
                                                   ? FollowButton(
-                                                      backgroundColor:
-                                                          Colors.white,
+                                                      backgroundColor: Colors.white,
                                                       text: "Unfollow",
                                                       textColor: Colors.black,
                                                       borderColor: Colors.grey,
                                                       onPressed: () async {
-                                                        var userId = context
-                                                            .read<
-                                                                UserProvider>()
-                                                            .getUserUid;
-                                                        await context
-                                                            .read<
-                                                                UserProvider>()
-                                                            .followUser(
+                                                        var userId = context.read<UserProvider>().getUserUid;
+                                                        await context.read<UserProvider>().followUser(
                                                               userId,
                                                               user.uid,
                                                             );
                                                       },
                                                     )
                                                   : FollowButton(
-                                                      backgroundColor:
-                                                          Colors.blue,
+                                                      backgroundColor: Colors.blue,
                                                       text: "Follow",
                                                       textColor: Colors.white,
                                                       borderColor: Colors.blue,
                                                       onPressed: () async {
-                                                        if (user.followers
-                                                            .isNotEmpty) {
-                                                          user.followers
-                                                              .forEach(
-                                                                  (element) {
-                                                            print(
-                                                                "follow $element");
+                                                        if (user.followers.isNotEmpty) {
+                                                          user.followers.forEach((element) {
+                                                            print("follow $element");
                                                           });
                                                         } else {
-                                                          print(
-                                                              "list is empty ${user.email}");
+                                                          print("list is empty ${user.email}");
                                                         }
 
-                                                        var userId = context
-                                                            .read<
-                                                                UserProvider>()
-                                                            .getUserUid;
-                                                        await context
-                                                            .read<
-                                                                UserProvider>()
-                                                            .followUser(
+                                                        var userId = context.read<UserProvider>().getUserUid;
+                                                        await context.read<UserProvider>().followUser(
                                                               userId,
                                                               user.uid,
                                                             );
                                                       },
                                                     )
                                         ],
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       )
                                     ],
                                   ),

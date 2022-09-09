@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:instagram/models/comment.dart';
 
 import '../models/post.dart';
-import '../models/user.dart';
 import '../resources/firestore_methods.dart';
 
 class PostProvider with ChangeNotifier {
