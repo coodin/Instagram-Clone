@@ -138,6 +138,10 @@ class FirestoreMethods {
     var user = _firestore
         .collection("users")
         .where("username", isGreaterThanOrEqualTo: userName)
+        .where(
+          "username",
+          isLessThanOrEqualTo: "$userName\uf7ff",
+        )
         .snapshots();
     return user.map(
       (event) => event.docs

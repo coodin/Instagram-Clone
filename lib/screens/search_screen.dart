@@ -89,7 +89,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                            print("uid: ${snapshot.data![index].uid}");
+                            ///print("uid: ${snapshot.data![index].uid}");
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ProfileScreen(
